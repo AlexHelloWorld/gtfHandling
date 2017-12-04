@@ -6,9 +6,12 @@ def processAttributeToDictionary(element8):
     attrDict = dict()
     for i in elements:
         if(i != ''):
-            attr = i.split('"')
-            attr_name = attr[0].strip()
-            attr_value = attr[1].strip()
+            attr = i.strip().split()
+            if(attr[1][0] == '"'):
+                attr_value = attr[1][1:-1]
+            else:
+                attr_value = attr[1]
+            attr_name = attr[0]
             attrDict[attr_name] = attr_value
 
     return attrDict
